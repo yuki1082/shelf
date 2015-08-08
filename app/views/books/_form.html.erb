@@ -1,0 +1,8 @@
+<%= form_for @book do |form| %>
+	<li>	<%=form.label :title, "タイトル"%> : <%= form.text_field :title %></li>
+	<li>	<%= form.label :publish_year, "出版年" %> : <%= form.text_field :publish_year %></li>
+	<li> <%= form.label :authors, "著者" %> : <%= form.text_field :authors %></li>
+	<li> <%= form.check_box :checked_out, checked: true %> <%= form.label :checked_out, "貸出中" %></li>
+	<li> <%= form.label :comment, "コメント" %><%= form.text_area :comment %></li>
+<%= form.submit %>
+<% end %>

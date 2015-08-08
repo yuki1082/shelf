@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>書蔵管理アプリケーションShelf</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrapper">
+	<%= render "shared/header" %>
+	<div id="content" >
+	<%= yield %>
+</div>
+	<%= render "shared/footer" %>
+</div>
+
+</body>
+</html>
