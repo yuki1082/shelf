@@ -22,11 +22,32 @@ class BooksController < ApplicationController
 	end 
 
 	def destroy
+		@book = Book.find(params[:id])
+		@book.destroy
+		redirect_to :back
 	end 
 
 	def create
 		@book = Book.create(params[:book])
 		redirect_to @book
 	end 
+
+	def check_out
+		@book = Book.find(params[:id])
+		@book.update_attribute(:checked_out, true)
+		redirect_to :back
+	end 
+
+	def check_in
+		@book = Book.find(params[:id])
+		@book.update_attribute(:checked_out, false)
+		redirect_to :back
+	end 
+	
+	def checked_out
+		@books = Book.where(checked_out: true)
+		render :index
+	end 
+
 
 end

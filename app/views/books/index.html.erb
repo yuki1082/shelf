@@ -1,3 +1,15 @@
+<% if params[:action] == "index" %>
+	<li>在庫</li>
+<% else %>
+<li><%= link_to "在庫", :books%></li>
+<% end %>
+<% if params[:action] == "checked_out" %>
+	<li>貸出中</li>
+<% else %>
+	<li><%= link_to "貸出中", [:checked_out, :books] %></li>
+<% end %>
+
+
 <table class="books">
 <col class="title">
 <col class="authors">
@@ -7,9 +19,14 @@
 		<td>タイトル： <%= link_to book.title, book%>: <%= link_to "編集", [:edit, book]%></td>
 		<td>筆者：<%= book.authors %></td>
 		<td>出版日：<%= book.publish_year %></td>
+		<% if book.checked_out? %>
+		<td><%= link_to "在庫", [:check_in, book], method: :put %></td>
+		<% else %>
+		<td><%= link_to "貸出中", [:check_out, book], method: :put %></td>
+		<% end %>
+		<td><%= link_to "削除", book,  method: :delete, confirm: "Are you shure?" %></td>
 	</tr>
 <% end %>
 <td>
 </table>
-
 <h3><%= link_to "新規登録", [:new, :book]%></h3>
