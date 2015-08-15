@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 	def index
-		@books = Book.where(checked_out: false)
+		@books = Book.checked_in
 	end 
 
 	def show
@@ -45,7 +45,13 @@ class BooksController < ApplicationController
 	end 
 	
 	def checked_out
-		@books = Book.where(checked_out: true)
+		@books = Book.checked_out
+		render :index
+	end 
+
+	def search
+		@books = Book.order(:id)
+		@books = @books.search(params[:q]) if params[:q].present?
 		render :index
 	end 
 
