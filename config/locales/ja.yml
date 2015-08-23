@@ -1,0 +1,10 @@
+ja:  
+  activerecord:  
+    attributes:  
+      book:
+        title:  タイトル
+        authors:  著者
+        checked_out:  貸出中
+        comment: コメント
+        publish_year: 出版日
+

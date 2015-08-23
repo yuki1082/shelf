@@ -1,14 +1,5 @@
-<% if params[:action] == "index" %>
-	<li>在庫</li>
-<% else %>
-<li><%= link_to "在庫", :books%></li>
-<% end %>
-<% if params[:action] == "checked_out" %>
-	<li>貸出中</li>
-<% else %>
-	<li><%= link_to "貸出中", [:checked_out, :books] %></li>
-<% end %>
-
+<%= render "categories" %>
+<%= render "navigation" %>
 
 <table class="books">
 <col class="title">

@@ -1,0 +1,15 @@
+<% action = params[:action] == "checked_out" ? :checked_out : nil %>
+<ul>
+  <% if @category %>
+    <li>  <%= link_to "本一覧", [action,:books] %> </li>
+  <% else %>
+    <li>本一覧</li>
+  <% end %>
+  <% Category.all.each do |category| %>
+    <% unless @category == category %>
+      <li><%= link_to(category.name, [action, category, :books], style:"color:#{category.color}") %></li>
+    <% else %>
+      <li><%= category.name %></li>
+    <% end %>
+  <% end %>
+</ul>

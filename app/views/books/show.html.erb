@@ -1,4 +1,7 @@
 <h1><%= @book.title %></h1>
+<% if @book.category %>
+	<div id="category">カテゴリー名<%= @book.category.name %> </div>
+<% end %>
 <div id="authors"><%=@book.authors %></div>
 <div id="publish_year"><%=@book.publish_year %></div>
 <div id="comment"><%= @book.comment %></div>
