@@ -7,4 +7,7 @@ ja:
         checked_out:  貸出中
         comment: コメント
         publish_year: 出版日
+      category:
+        name: カテゴリー名  
+        
 

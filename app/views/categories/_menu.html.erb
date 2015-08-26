@@ -1,0 +1,7 @@
+<ul>
+  <li><%= link_to_unless params[:action] == "index", 
+  "書籍一覧", :categories %></li>
+  <li><%= link_to_unless params[:action] == "new", 
+  "書籍リスト新規作成", [:new, :book]  %></li>
+  <li><%= link_to "タスク一覧に戻る", :books %></li>
+</ul>

@@ -1,11 +1,8 @@
 class BooksController < ApplicationController
+  before_filter :prepare, only: [:index, :checked_out]
+
   def index
-    if params[:category_id]
-      @category = Category.find(params[:category_id])
-      @books = @category.books.checked_in
-    else
-      @books = Book.checked_in
-    end
+      @books = @books.checked_in
   end
 
   def show
@@ -57,12 +54,7 @@ class BooksController < ApplicationController
   end
 
   def checked_out
-  	if params[:category_id]
-  		@category = Category.find(params[:category_id])
-  		@books = @category.books.checked_out
-  	else
-  		@books = Book.checked_out
-  	end 
+    @books = @books.checked_out
   	render :index
   end
 
@@ -71,6 +63,17 @@ class BooksController < ApplicationController
     @books = @books.search(params[:q]) if params[:q].present?
     render :index
   end
+
+
+private
+  def prepare
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @books = @category.books
+    else
+      @books = Book
+    end 
+  end 
 
 
 end

@@ -1,0 +1,11 @@
+<%= form_for @category do |form| %>
+  <% unless @category.errors.empty? %>
+    <p>入力に誤りがあります</p>
+    <% @category.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+  <li><%= form.label :name %><%= form.text_field :name %></li>
+  <li><%= form.label :color %><%= form.text_field :color %></li>
+  <li><%= form.submit "送信" %></li>
+<% end %>

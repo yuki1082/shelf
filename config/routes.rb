@@ -5,12 +5,13 @@ Shelf::Application.routes.draw do
     get :checked_out, :search,  on: :collection
   end 
 
-  resources :categories do 
+  resources :categories, except: [:show] do 
     resources :books, only:[:index] do 
       get :checked_out, on: :collection
     end 
   end 
 
+  match '*anything' => 'errors#not_found'
 
 
   # The priority is based upon order of creation:

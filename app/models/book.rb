@@ -10,4 +10,13 @@ class Book < ActiveRecord::Base
   validates :title, presence: true, length:{maximum: 80}
   validates :authors, presence: true, length: {maximum: 80}
   validates :comment, presence: true, length: {maximum: 400}
+  validate  :check_association
+
+  private
+  def check_association
+    if category_id && Category.where(id: category_id).exists?
+      errors.add(:base, :missing_category)
+      self.category_id = nil
+    end 
+  end 
 end
